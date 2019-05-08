@@ -7,12 +7,19 @@ import{AngularFireModule} from '@angular/fire'
 import{AngularFirestoreModule} from '@angular/fire/firestore'
 import { LayoutModule} from './layout/layout.module';
 import { environment } from 'src/environments/environment';
+import { ProductFormComponent } from './components/product-form/product-form.component';
+import { Routes, RouterModule } from '@angular/router';
 
+const routes: Routes=[
+  {path:'product-form', component: ProductFormComponent },
+]
 
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule,AngularFireModule.initializeApp(environment.firebase),
+  declarations: [AppComponent, ProductFormComponent],
+  imports: [BrowserModule, 
+    RouterModule.forRoot(routes),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, AppRoutingModule,LayoutModule],
   bootstrap: [AppComponent]
 })
