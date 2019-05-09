@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { StoreRoutingModule } from './store-routing.module';
-import { CartDetailComponent } from './cart-detail/cart-detail.component';
-
+import { CatalogoComponent } from './catalogo/catalogo.component';
+import { ProductsService } from './products.service';
 @NgModule({
-  declarations: [CartDetailComponent],
+  declarations: [CatalogoComponent],
   imports: [
     CommonModule,
     StoreRoutingModule
-  ]
+  ],
+  providers :[ProductsService]
 })
 export class StoreModule { }
