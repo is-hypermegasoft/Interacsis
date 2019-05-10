@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/shared/models/product';
-import { ProductsService } from '../products.service';
+import { ProductsService } from '../../shared/models/products.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -19,7 +19,6 @@ export class CatalogoComponent implements OnInit {
     this.products$.subscribe(products => {
       this.products = products;
       console.log(this.products);
-
     });
   }
 

@@ -1,9 +1,9 @@
-<ul class="collection with header">
-  <li class="collection-header"><h4>Products</h4></li>
-  <li class="collection-item product">
-    <img src="/src/assets/img/imgProd1.png" alt="", class="square">
-    <span class="title">Product Name</span>
-    <p>Product price</p>
-    <a href="#!" class="secondary-content"><i class="material-icon">clear</i></a>
-  </li>
-</ul>
+<div class="container">
+  <div class="row">
+      <div *ngFor = "let product of products" class="col s12 m3">
+          <div class="collection">
+              <a href="#!" class="collection-item"><span class="badge">${{product.Price}}</span>{{product.name}}</a>
+        </div>
+      </div>
+  </div>
+</div>

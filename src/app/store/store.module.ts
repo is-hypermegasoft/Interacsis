@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { StoreRoutingModule } from './store-routing.module';
 import { CatalogoComponent } from './catalogo/catalogo.component';
-import { ProductsService } from './products.service';
+import { ProductsService } from '../shared/models/products.service';
 @NgModule({
   declarations: [CatalogoComponent],
   imports: [
