@@ -1,35 +1,40 @@
-<h1><font face="verdana"color="skyblue"> Formulario Registro de Productos</font></h1>
-
-
-<form (ngSubmit)="addProduct()">
-  
-  
-  <font face="verdana"color="black">  Nombre del producto:</font>
-  <input type="text" name="name" [(ngModel)]="product.name">
-  
-  
-  <font face="verdana"color="black">Categoria:</font>
-  <input type="text" name="categoria" [(ngModel)]="product.categoria"> 
- 
-  
-  <font face="verdana"color="black">Precio:</font>
-  <input type="number" name="price" [(ngModel)]="product.price" step="0.1">
- 
-  <font face="verdana"color="black">Descripcion:</font>
-  <input type="text" name="description" [(ngModel)]="product.description">
- 
-  <font face="verdana"color="black">Imagen:</font>
-  <input type="text" name="image" [(ngModel)]="product.image">
- 
-  <button type="submit">
-    Save
-  </button>
-  <button class="button" [routerLink]="['/']" >Volver
-
-  </button>
- 
-  
-</form>
+<div class="col-md-6 mx-auto">
+  <div class="card">
+   <div class="card-body">
+    <h1 class="text-center"><font face="verdana"color="skyblue"> Formulario Registro de Productos</font></h1>
+      <form (ngSubmit)="addProduct()">
+        <div class="form-group col-sm-8">
+          <font face="verdana"color="black">  Nombre del producto:</font>
+            <input type="text" name="name" class="form-control"[(ngModel)]="product.name">
+        </div>
+        <div class="form-group col-sm-8">
+          <font face="verdana"color="black">Categoria:</font>
+            <input type="text" name="categoria" class="form-control"[(ngModel)]="product.categoria"> 
+        </div>
+        <div class="form-group col-sm-8">
+          <font face="verdana"color="black">Precio:</font>
+            <input type="number" name="price" class="form-control"[(ngModel)]="product.price" step="0.1">
+        </div>
+        <div class="form-group col-sm-8">
+          <font face="verdana"color="black">Descripcion:</font>
+            <input type="text" name="description"class="form-control" [(ngModel)]="product.description">
+        </div>
+        <div class="form-group col-sm-8">
+          <font face="verdana"color="black">Imagen:</font>
+            <input type="text" name="image" class="form-control"[(ngModel)]="product.image">
+        </div>
+        <button class="btn" type="submit">
+          Save
+        </button>
+        <p></p>
+        <button class="btn" [routerLink]="['/']" >Volver
+        </button>
+       
+        
+      </form>
+  </div>
+</div>
+</div>
 
 
 <!--<form action="">
