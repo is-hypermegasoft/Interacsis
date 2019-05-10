@@ -1,19 +1,41 @@
-<!--<form (ngSubmit)="addProduct()">
-  <input type="text" name="category" [(ngModel)]="product.category"> 
-  <input type="text" name="description" [(ngModel)]="product.description">
-  <input type="text" name="name" [(ngModel)]="product.name">
-  <input type="number" name="price" [(ngModel)]="product.price" step="0.01">
+<h1><font face="verdana"color="skyblue"> Formulario Registro de Productos</font></h1>
 
+
+<form (ngSubmit)="addProduct()">
+  
+  
+  <font face="verdana"color="black">  Nombre del producto:</font>
+  <input type="text" name="name" [(ngModel)]="product.name">
+  
+  
+  <font face="verdana"color="black">Categoria:</font>
+  <input type="text" name="categoria" [(ngModel)]="product.categoria"> 
+ 
+  
+  <font face="verdana"color="black">Precio:</font>
+  <input type="number" name="price" [(ngModel)]="product.price" step="0.1">
+ 
+  <font face="verdana"color="black">Descripcion:</font>
+  <input type="text" name="description" [(ngModel)]="product.description">
+ 
+  <font face="verdana"color="black">Imagen:</font>
+  <input type="text" name="image" [(ngModel)]="product.image">
+ 
   <button type="submit">
     Save
   </button>
+  <button class="button" [routerLink]="['/']" >Volver
 
-</form>-->
-<p></p>
-<form action="">
+  </button>
+ 
+  
+</form>
+
+
+<!--<form action="">
   <div class="container">
     <label for="">Agregar:</label>
     <input type="text" placeholder="poner algo">
     <button class="btn btn-primary">Agregar</button>
   </div>
-</form>
+</form>-->

@@ -3,12 +3,12 @@
     <div *ngFor = "let product of products" class="col s12 m3">
       <div class="card">
         <div class="card-image">
-          <img [src]="product.Image">
+          <img [src]="product.image">
           <span style="color:black" class="card-title"><b>{{product.name}}</b></span>
         </div>
         <div class="card-content">
           <p>
-            <b>Precio: </b>${{product.Price}}</p>
+            <b>Precio: </b>${{product.price}}</p>
         </div>
         <div class="card-action">
           <a href="#" class="btn">Comprar</a>

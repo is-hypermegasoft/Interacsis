@@ -9,9 +9,13 @@ import { LayoutModule} from './layout/layout.module';
 import { environment } from 'src/environments/environment';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { Routes, RouterModule } from '@angular/router';
+import {FormsModule} from '@angular/forms';
+//import {ProductsComponent} from './components/products/products.component';
+import{NavbarComponent}from './layout/navbar/navbar.component';
 
 const routes: Routes=[
   {path:'product-form', component: ProductFormComponent },
+  {path:'navbar', component:NavbarComponent},
 ]
 
 
@@ -20,7 +24,9 @@ const routes: Routes=[
   imports: [BrowserModule, 
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, AppRoutingModule,LayoutModule],
+    AngularFirestoreModule, AppRoutingModule,LayoutModule,
+    FormsModule],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
