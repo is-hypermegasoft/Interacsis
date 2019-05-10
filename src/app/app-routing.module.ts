@@ -5,7 +5,11 @@ const routes: Routes = [
   {
     path: 'store',
     loadChildren: './store/store.module#StoreModule'
-}  
+  },
+  {
+    path: 'cart',
+    loadChildren: './cart/cart.module#CartModule'
+  }
 ];
 
 @NgModule({
