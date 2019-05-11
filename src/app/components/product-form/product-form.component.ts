@@ -16,7 +16,7 @@ export class ProductFormComponent implements OnInit {
   }
  addProduct()
  {
-  if(this.product.name!=='' && this.product.description!=='' && this.product.price!==0)
+  if(this.product.name!=='' && this.product.description!=='' && this.product.price!==0 && this.product.state!=='')
   {
     console.log(this.product);
     this.productService.addProduct(this.product);

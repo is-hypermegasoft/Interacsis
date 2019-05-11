@@ -23,11 +23,15 @@
           <font face="verdana"color="black">Imagen:</font>
             <input type="text" name="image" class="form-control"[(ngModel)]="product.image">
         </div>
+        <div class="form-group col-sm-8">
+          <font face="verdana"color="black">Estado:</font>
+            <input type="text" name="state" class="form-control"[(ngModel)]="product.state">
+        </div>
         <button class="btn" type="submit">
           Save
         </button>
         <p></p>
-        <button class="btn" [routerLink]="['/']" >Volver
+        <button class="btn" [routerLink]="['/store']" >Volver
         </button>
        
         
