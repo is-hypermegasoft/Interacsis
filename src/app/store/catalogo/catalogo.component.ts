@@ -10,17 +10,12 @@ import { ProductsService } from '../products.service';
 })
 export class CatalogoComponent implements OnInit {
   products$  : Observable<Product[]>;
-  products: Product[];
+  
 
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() :void {
     this.products$ = this.productsService.getProducts();
-    this.products$.subscribe(products => {
-      this.products = products;
-      console.log(this.products);
-
-    });
-  }
+     }
 
 }
