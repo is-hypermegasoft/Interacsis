@@ -27,8 +27,6 @@ export class NavbarComponent implements OnInit{
       //obteniendo el nro de elementos del carrito
       this.nro=this.products.length;
     });
-    
-    //let 
 
   }
 

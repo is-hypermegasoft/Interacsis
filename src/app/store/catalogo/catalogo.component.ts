@@ -13,6 +13,10 @@ export class CatalogoComponent implements OnInit {
   products$  : Observable<Product[]>;
   products: Product[];
 
+  ofertas$ : Observable<Product[]>;
+  ofertas: Product[];
+
+
   constructor(private productsService: ProductService) {}
 
   ngOnInit() :void {
@@ -22,6 +26,13 @@ export class CatalogoComponent implements OnInit {
       console.log(this.products);
 
     });
+
+    this.ofertas$=this.productsService.getOfertas();
+    this.ofertas$.subscribe(ofertas => {
+      this.ofertas = ofertas;
+    });
+
+
   }
 
   //metodo carrito que llama el servicio agregarCarrito enviando el producto observable

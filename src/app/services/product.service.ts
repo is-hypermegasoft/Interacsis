@@ -15,11 +15,17 @@ export class ProductService {
   productsCollection: AngularFirestoreCollection<Product>;
   //coleccion firestore de carrito
   productsCollectionCarrito: AngularFirestoreCollection<Product>;
+  //colecion  firestore de ofertas
+  ofertasCollection: AngularFirestoreCollection<Product>;
+
   carritoCollection: AngularFirestoreCollection<Product>;
 
   productDoc:AngularFirestoreDocument<Product>;
   products:Observable<Product[]>;
+  //observable para carrito
   carrito:Observable<Product[]>;
+  //observable para ofertas
+  ofertas:Observable<Product[]>;
 
 constructor(public db:AngularFirestore) {
   //se da a producsCollection la ruta donde debera almacenar el producto para el carrito
@@ -32,6 +38,11 @@ constructor(public db:AngularFirestore) {
   this.carritoCollection=this.db.collection('usuarios/E9DZmcLPUxWRWHt5obtR/carrito');
   //alamcenamos la coleccion en el observable
   this.carrito=this.carritoCollection.valueChanges();
+
+
+  //ofertas
+  this.ofertasCollection=this.db.collection('Products', ref => ref.where('state','==','ofertas'));
+  this.ofertas=this.ofertasCollection.valueChanges();
  }
 
  getProducts(){
@@ -40,6 +51,10 @@ constructor(public db:AngularFirestore) {
 
  nroDocsCarrito(){
   return this.carrito;
+ }
+
+ getOfertas(){
+   return this.ofertas;
  }
 
  addProduct(product: Product){
