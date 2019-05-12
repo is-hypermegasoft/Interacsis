@@ -13,14 +13,14 @@ export class ProductsService {
     return this.database.collection<Product>('Products').valueChanges();
   
   }
-  /*getEstado(estado : string):Observable <Product[]>{
-    return  this.database.collection<Product>('Products',{
-      query:{
-        orderByChild: 'state',
-        equalTo: estado
-      } 
-
-    })
-    
-  }*/
+  getOfertas(): Observable <Product[]>{
+    return this.database.collection<Product>('Products',ref => ref.where('state','==','ofertas')).valueChanges();
+  
+  }
+  getNuevos(): Observable<Product[]>{
+    return this.database.collection<Product>('Products',ref => ref.where('state','==','nuevo')).valueChanges();
 }
+    }
+    
+  
+

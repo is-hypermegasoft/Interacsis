@@ -10,12 +10,18 @@ import { ProductsService } from '../products.service';
 })
 export class CatalogoComponent implements OnInit {
   products$  : Observable<Product[]>;
-  
-
+  ofertas$ : Observable<Product[]>;
+  nuevos$ : Observable<Product[]>;
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() :void {
+    
     this.products$ = this.productsService.getProducts();
-     }
+    this.ofertas$ = this.productsService.getOfertas();  
+    this.nuevos$ = this.productsService.getNuevos();
+  };
+     
+    
+    
 
-}
+    }
