@@ -9,6 +9,10 @@ export class ProductsService {
   constructor(private database: AngularFirestore) { }
   getProducts(): Observable <Product[]>{
     return this.database.collection<Product>('Products').valueChanges();
-
   }
+
+  removeProduct(product:Product){
+    this.database.doc(`product`).delete();
+  }
+
 }

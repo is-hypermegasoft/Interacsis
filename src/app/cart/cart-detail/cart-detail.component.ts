@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
   styleUrls: ['./cart-detail.component.css']
 })
 export class CartDetailComponent implements OnInit {
+  totalPrice: number;
   products$  : Observable<Product[]>;
   products: Product[];
 
@@ -20,6 +21,15 @@ export class CartDetailComponent implements OnInit {
       this.products = products;
       console.log(this.products);
     });
+  }
+  
+  caculoTotal(product: Product): number{
+    this.totalPrice = product.quantity * product.price;
+    return this.totalPrice;
+  }
+
+  removeProduct(product:Product){
+    this.productsService.removeProduct(product);
   }
 
 }
