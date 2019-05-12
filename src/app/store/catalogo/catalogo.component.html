@@ -1,22 +1,53 @@
+<p></p>
 <div class = "container">
-<div class="row">
-    <div *ngFor = "let product of products" class="col s12 m3">
-      <div class="card">
-        <div class="card-image">
-          <img [src]="product.image">
-          <span style="color:black" class="card-title"><b>{{product.name}}</b></span>
-        </div>
+  <div class="row">
+    <div *ngFor = "let product of products" class="col s12 m4">
+      <div class="card" style="width: 18rem;">
+        <!--<div class="card-image">-->
+        <img [src]="product.image"  width="230" height="250">
+          <span style="color:black" class="card-title text-center"><b>{{product.name}}</b></span>
+        <!--</div>-->
         <div class="card-content">
-          <p>
-            <b>Precio: </b>${{product.price}}</p>
+          <p><b>Precio: </b>${{product.price}}</p>
         </div>
+        <div class="dropdown-divider"></div>
+          <p class="text-center">Para saber mas sobre este producto presione el botón ver detalles</p>
         <div class="card-action">
           <a href="#" class="btn">Comprar</a>
           <p></p>
           <a href="#" class="btn">Añadir carrito</a>
           <p></p>
-          <a href="" class="btn">Ver Detalles</a>
+          <a class="btn btn-outline-primary" data-toggle="modal" 
+              data-target="#exampleModalScrollable" (click)="detalles(product)">
+            Ver Detalles
+          </a>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle"><p>Nombre: {{mostrarItem.name}} </p></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card col-sm-4 text-center" style="width: 18rem;">
+          <img [src]="mostrarItem.image" class="card-img-top" alt="...">
+        </div>
+      <p></p>
+      <p><b>Nombre:</b> {{mostrarItem.name}} </p>
+      <p><b>Precio:</b> $us {{mostrarItem.price}} </p>
+      <p><b>Descripción:</b> {{mostrarItem.description}} </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

@@ -12,7 +12,8 @@ import { ProductsService } from '../products.service';
 export class CatalogoComponent implements OnInit {
   products$  : Observable<Product[]>;
   products: Product[];
-
+  
+  mostrarItem:any
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() :void {
@@ -22,6 +23,10 @@ export class CatalogoComponent implements OnInit {
       console.log(this.products);
 
     });
+  }
+  detalles(product): void
+  {
+    this.mostrarItem = product;
   }
 
 }
