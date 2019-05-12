@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit{
     this.products$.subscribe(products => {
       this.products = products;
       console.log(this.products);
+      //obteniendo el nro de elementos del carrito
       this.nro=this.products.length;
     });
     
