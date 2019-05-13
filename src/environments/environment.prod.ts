@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  frebase:{
+  firebase:{
     apiKey: "AIzaSyBkIJvFdEYcNOXSsMW1m4AtomrrC5f1ZV8",
     authDomain: "hypermegasoft.firebaseapp.com",
     databaseURL: "https://hypermegasoft.firebaseio.com",
