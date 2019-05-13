@@ -5,6 +5,7 @@ import { Product } from 'src/app/models/product';
 import swal from 'sweetalert2';
 import { RouterLink } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -50,6 +51,12 @@ export class ProductFormComponent implements OnInit {
    }
     
  }
- 
+ //ojo ultimo
+  resetForm(productForm:NgForm)
+  {
+     if(productForm != null)
+        productForm.reset();
+        this.productService.products=null;
+  }
 
 }
