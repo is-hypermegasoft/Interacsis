@@ -2,25 +2,28 @@
   <thead>
     <tr>
       <th>Quantity</th>
-        <th>Product Name</th>
-        <th>Single Price</th>
-        <th>Total Price</th>
-        <th>Remove</th>
+      <th>Product Name</th>
+      <th>Single Price $</th>
+      <th>Total Price $</th>
+      <th>Remove</th>
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let product of products">
-      <td>{{product.quantity}}</td>
-      <td>{{product.name}}</td>
+      <td>#</td>
+      <td>
+        <span ng-show="sortType == 'name'" class="fa fa-caret-down">
+          {{product.name}}
+        </span></td>
       <td>{{product.price}}</td>
-      <td>{{totalPrice}}</td>
+      <td>Quantity x Price</td>
       <td><a (click)="removeProduct(product)"><i class="material-icons">delete</i></a></td>
     </tr>
   </tbody>
 </table>
 <p></p>
-<h1>TOTAL</h1>
+<h1>TOTAL {{totalPrice}}</h1>
 <a href="/"><button class="btn">STEP BACK</button></a>
 <a><button class="btn my-button-style">RESTART</button></a>
 <a><button class="btn my-button-style">BUY</button></a>

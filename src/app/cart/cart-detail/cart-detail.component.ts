@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Product } from 'src/app/shared/models/product';
 import { ProductsService } from '../../shared/models/products.service';
 import { Observable } from 'rxjs/internal/Observable';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-cart-detail',
@@ -16,19 +17,22 @@ export class CartDetailComponent implements OnInit {
   constructor(private productsService: ProductsService) { }
 
   ngOnInit():void {
-    this.products$ = this.productsService.getProducts();
+    this.products$ = this.productsService.getCarrito();
     this.products$.subscribe(products => {
       this.products = products;
       console.log(this.products);
     });
   }
   
-  caculoTotal(product: Product): number{
-    this.totalPrice = product.quantity * product.price;
+  caculoTotal(): number{
+    for (let i = 0; i < this.products.length; i++) {
+      const product = this.products[i];
+      this.totalPrice = this.totalPrice + product.price;
+    }
     return this.totalPrice;
   }
 
-  removeProduct(product:Product){
+  removeProduct(product: Product){
     this.productsService.removeProduct(product);
   }
 
