@@ -52,10 +52,10 @@ export class ProductFormComponent implements OnInit {
     
  }
  //ojo ultimo
-  resetForm(productForm:NgForm)
+  resetForm(/*productForm:NgForm*/)
   {
-     if(productForm != null)
-        productForm.reset();
+     //if(productForm != null)
+        //productForm.reset();
         this.productService.products=null;
   }
 
