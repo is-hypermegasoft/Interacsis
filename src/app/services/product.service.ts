@@ -9,16 +9,47 @@ import {map} from 'rxjs/operators';
 })
 export class ProductService {
 
+  //coleccion firestore de carrito
+  productsCollectionCarrito: AngularFirestoreCollection<Product>;
+  carritoCollection: AngularFirestoreCollection<Product>;
+  //observable para carrito
+  carrito:Observable<Product[]>;
+
   productsCollection: AngularFirestoreCollection<Product>;
   productDoc:AngularFirestoreDocument<Product>;
   products:Observable<Product[]>;
   selectProduct: Product;//AUMENTE
 
 constructor(public db:AngularFirestore) {
+
+  //se da a producsCollection la ruta donde debera almacenar el producto para el carrito
+    //para siguiente tarea habria que agregar el id usuario que cargara su carrito
+    this.productsCollectionCarrito=this.db.collection('usuarios/E9DZmcLPUxWRWHt5obtR/carrito/');
   this.productsCollection=this.db.collection('Products');
   this.products=this.productsCollection.valueChanges();
+  this.productsCollection=this.db.collection('Products');
+  this.products=this.productsCollection.valueChanges();
+  //almacenamos toda la coleccion del carrito
+  this.carritoCollection=this.db.collection('usuarios/E9DZmcLPUxWRWHt5obtR/carrito');
+  //alamcenamos la coleccion en el observable
+  this.carrito=this.carritoCollection.valueChanges();
 
  }
+
+//metodo que retorna el nro de elementos del carrito
+nroDocsCarrito(){
+  return this.carrito;
+ }
+
+ //servicio que realiza la insercion del producto al carrito en la base de datos
+ agregarCarrito(product: Product){
+  console.log(product);
+  console.log("Es de servicios");
+  this.productsCollectionCarrito.add(product);
+
+ }
+ 
+
  getProducts(){
    return this.products;
  }
@@ -28,4 +59,10 @@ constructor(public db:AngularFirestore) {
    this.productsCollection.add(product);
 
  }
+ getOfertas(): Observable <Product[]>{
+   return this.db.collection<Product>('Products',ref=>ref.where('state','==','ofertas')).valueChanges();
+ }
+ getNuevos(): Observable <Product[]>{
+  return this.db.collection<Product>('Products',ref=>ref.where('state','==','nuevo')).valueChanges();
+}
 }
