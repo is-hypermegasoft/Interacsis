@@ -12,10 +12,12 @@ import { Routes, RouterModule } from '@angular/router';
 import {FormsModule} from '@angular/forms';
 //import {ProductsComponent} from './components/products/products.component';
 import{NavbarComponent}from './layout/navbar/navbar.component';
+import { SearchbarComponent } from './layout/searchbar/searchbar.component';
 
 const routes: Routes=[
   {path:'product-form', component: ProductFormComponent },
   {path:'navbar', component:NavbarComponent},
+  {path:'searchbar', component:SearchbarComponent}
 ]
 
 

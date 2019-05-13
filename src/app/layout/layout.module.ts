@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router';
 
 import { SidenavDirective } from './navbar/sidenav.directive';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 
 @NgModule({
-  declarations: [NavbarComponent, SidenavDirective],
+  declarations: [NavbarComponent, SidenavDirective, SearchbarComponent],
   imports: [CommonModule, RouterModule],
-  exports: [NavbarComponent ]
+  exports: [NavbarComponent,SearchbarComponent ]
+
 })
 export class LayoutModule {}
