@@ -12,6 +12,7 @@ export class ProductService {
   productsCollection: AngularFirestoreCollection<Product>;
   productDoc:AngularFirestoreDocument<Product>;
   products:Observable<Product[]>;
+  selectProduct: Product;//AUMENTE
 
 constructor(public db:AngularFirestore) {
   this.productsCollection=this.db.collection('Products');
