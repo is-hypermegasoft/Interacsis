@@ -14,7 +14,7 @@ export class CatalogoComponent implements OnInit {
   //products: Product[];
   ofertas$:Observable<Product[]>;
   nuevos$:Observable<Product[]>;
-
+  mostrarItem:any;
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() :void {
@@ -28,7 +28,10 @@ export class CatalogoComponent implements OnInit {
     this.ofertas$=this.productsService.getOfertas();
     this.nuevos$=this.productsService.getNuevos();
   }
-
+  detalles(product)
+  {
+    this.mostrarItem = product
+  }
   
   //metodo carrito que llama el servicio agregarCarrito enviando el producto observable
   Carrito(product: Product){
