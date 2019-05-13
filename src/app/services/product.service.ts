@@ -65,4 +65,7 @@ nroDocsCarrito(){
  getNuevos(): Observable <Product[]>{
   return this.db.collection<Product>('Products',ref=>ref.where('state','==','nuevo')).valueChanges();
 }
+  getCarrito(): Observable <Product[]>{
+    return this.carritoCollection.valueChanges();
+  }
 }
