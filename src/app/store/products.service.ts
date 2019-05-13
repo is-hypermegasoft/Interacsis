@@ -6,9 +6,14 @@ import {AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument} fr
 import {Product} from '../models/product';
 import {map} from 'rxjs/operators';
 
+export interface Item { name: string;}
 
 @Injectable()
-export class ProductsService {
+export class ProductsService 
+{
+  private itemsCollection: AngularFirestoreCollection<Item>;
+  items: Observable<Item[]>;
+  private itemDoc: AngularFirestoreDocument<Item>;
 
     //coleccion firestore de carrito
     productsCollectionCarrito: AngularFirestoreCollection<Product>;
@@ -20,7 +25,8 @@ export class ProductsService {
     products:Observable<Product[]>;
     selectProduct: Product;//AUMENTE
 
-  constructor(private database: AngularFirestore) { 
+  constructor(private database: AngularFirestore) 
+  { 
     //se da a producsCollection la ruta donde debera almacenar el producto para el carrito
     //para siguiente tarea habria que agregar el id usuario que cargara su carrito
     this.productsCollectionCarrito=this.database.collection('usuarios/E9DZmcLPUxWRWHt5obtR/carrito/');
@@ -31,7 +37,14 @@ export class ProductsService {
   //almacenamos toda la coleccion del carrito
   this.carritoCollection=this.database.collection('usuarios/E9DZmcLPUxWRWHt5obtR/carrito');
   //alamcenamos la coleccion e el observable
-  this.carrito=this.carritoCollection.valueChanges();
+  //this.carrito=this.carritoCollection.valueChanges();
+  this.carrito=this.carritoCollection.snapshotChanges().pipe(
+    map( actions => actions.map(a=> {
+      const data = a.payload.doc.data() as Item;
+      const id = a.payload.doc.id;
+      return { id, ...data };
+    }))
+  )
   }
   getProducts(): Observable <Product[]>{
     return this.database.collection<Product>('Products').valueChanges();
@@ -55,5 +68,10 @@ export class ProductsService {
  //metodo que retorna el nro de elementos del carrito
 nroDocsCarrito(){
   return this.carrito;
+ }
+ mostrarItem(product)
+ {
+  this.itemDoc = this.database.doc<Item>(`items/${product.id}`);
+  this.itemDoc.update(product);
  }
 }
