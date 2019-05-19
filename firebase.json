@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "/dist/Interacsis",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

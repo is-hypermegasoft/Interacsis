@@ -27,8 +27,8 @@ constructor(public db:AngularFirestore) {
     this.productsCollectionCarrito=this.db.collection('usuarios/E9DZmcLPUxWRWHt5obtR/carrito/');
   this.productsCollection=this.db.collection('Products');
   this.products=this.productsCollection.valueChanges();
-  this.productsCollection=this.db.collection('Products');
-  this.products=this.productsCollection.valueChanges();
+ // this.productsCollection=this.db.collection('Products');
+ // this.products=this.productsCollection.valueChanges();
   //almacenamos toda la coleccion del carrito
   this.carritoCollection=this.db.collection('usuarios/E9DZmcLPUxWRWHt5obtR/carrito');
   //alamcenamos la coleccion en el observable

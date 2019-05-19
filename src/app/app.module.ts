@@ -20,6 +20,8 @@ import {ProductService} from './services/product.service';//ULTIMO AUMENTO
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';//ULTIMO AUMENTO
 import {ToastrModule} from 'ngx-toastr';
 import { CartDetailComponent } from './cart/cart-detail/cart-detail.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 const routes: Routes=[
   {path:'product-form', component: ProductFormComponent },
@@ -30,7 +32,7 @@ const routes: Routes=[
 
 
 @NgModule({
-  declarations: [AppComponent, ProductFormComponent, Mensaje1FormComponent, ProductsComponent, ProductListComponent, ProductComponent,CartDetailComponent],
+  declarations: [AppComponent, ProductFormComponent, Mensaje1FormComponent, ProductsComponent, ProductListComponent, ProductComponent,CartDetailComponent, PostsComponent, FilterPipe],
   imports: [BrowserModule, 
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
