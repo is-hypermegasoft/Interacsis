@@ -4,20 +4,16 @@
 <nav class="blue">
   <div class="nav-wrapper">
     <div class="container">
-    <a href="#" class="brand-logo">INTERACSIS</a>
+    <a href="/" class="brand-logo">INTERACSIS</a>
       <ul id="nav-mobile" class="right">
-        <li><a href="">Categorias</a></li>
-        <li><a >Carrito</a></li>
-        <li>
-            <a href="#" class= "dropdown-trigger" data-target="id_drop">
-              Categorias 
-              <!-- <i class ="material-icons center"> arrow_drop_down</i> -->
-            </a>
-          
-        </li>
+
+        <li><a>Login</a></li>
         
-       
-        
+        <li><a [routerLink]="['/cart']"><i class="large material-icons">add_shopping_cart</i></a></li>
+        <li><span class="badge orange">{{nro}}</span></li>
+        <li><a [routerLink]="['/product-form']">Agregar Producto</a></li>
+
+      
     </ul>
     </div>
    

@@ -1,0 +1,106 @@
+<div class="col-md-6 mx-auto">
+  <div class="card">
+   <div class="card-body">
+    <th class="text-center"><font face="verdana"color="skyblue"size="25"> Add New Product</font></th>
+      <form (ngSubmit)="addProduct()">
+        <div class="form-group col-sm-8">
+          <!----font face="verdana"color="black">  Nombre del producto:</font>
+            <input type="text" name="name" class="form-control"[(ngModel)]="product.name"-->
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              #name="ngModel"
+              [(ngModel)]="product.name"
+              placeholder="Add Product Name"
+            >
+        </div>
+        <div class="form-group col-sm-8">
+          <!----font face="verdana"color="black">Categoria:</font>
+            <input type="text" name="category" class="form-control"[(ngModel)]="product.category"--> 
+            <input
+            type="text"
+            class="form-control"
+            name="category"
+            #category="ngModel"
+            [(ngModel)]="product.category"
+            placeholder="Add Product Category"
+          >
+        </div>
+        <div class="form-group col-sm-8">
+          <!----font face="verdana"color="black">Precio:</font>
+            <input type="number" name="price" class="form-control"[(ngModel)]="product.price" -->
+            <input
+            type="number"
+            class="form-control"
+            name="price"
+            #price="ngModel"
+            [(ngModel)]="product.price"
+            placeholder="Add Product Price"
+          >
+        </div>
+        <div class="form-group col-sm-8">
+          <!----font face="verdana"color="black">Descripcion:</font>
+            <input type="text" name="description"class="form-control" [(ngModel)]="product.description"-->
+            <input
+            type="text"
+            class="form-control"
+            name="description"
+            #description="ngModel"
+            [(ngModel)]="product.description"
+            placeholder="Add Product Description"
+          >
+        </div>
+        <div class="form-group col-sm-8">
+          <!----font face="verdana"color="black">Imagen:</font>
+            <input type="text" name="image" class="form-control"[(ngModel)]="product.image"-->
+            <input
+            type="text"
+            class="form-control"
+            name="image"
+            #image="ngModel"
+            [(ngModel)]="product.image"
+            placeholder="Add Path Product Image"
+          >
+        </div>
+        <div class="form-group col-sm-8">
+          <!----font face="verdana"color="black">Estado:</font>
+            <input type="text" name="state" class="form-control"[(ngModel)]="product.state"-->
+            <input
+            type="text"
+            class="form-control"
+            name="image"
+            #image="ngModel"
+            [(ngModel)]="product.state"
+            placeholder="Add Product State"
+          >
+        </div>
+        
+        <button  class="btn" type="submit" >
+          
+          Save
+          </button>
+        
+        <p></p>
+        <button class="btn" type="reset" (click)="resetForm()">
+          Reset
+        </button>
+        
+        <p></p>
+        <button class="btn" [routerLink]="['/']" >Volver
+        </button>
+       
+        
+      </form>
+  </div>
+</div>
+</div>
+
+
+<!--<form action="">
+  <div class="container">
+    <label for="">Agregar:</label>
+    <input type="text" placeholder="poner algo">
+    <button class="btn btn-primary">Agregar</button>
+  </div>
+</form>-->

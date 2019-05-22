@@ -5,7 +5,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: './store/store.module#StoreModule'
-}  
+} 
+
 ];
 
 @NgModule({

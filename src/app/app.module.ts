@@ -7,16 +7,49 @@ import{AngularFireModule} from '@angular/fire'
 import{AngularFirestoreModule} from '@angular/fire/firestore'
 import { LayoutModule} from './layout/layout.module';
 import { environment } from 'src/environments/environment';
+import { ProductFormComponent } from './components/product-form/product-form.component';
+import { Routes, RouterModule } from '@angular/router';
+import {FormsModule} from '@angular/forms';
+//import {ProductsComponent} from './components/products/products.component';
+import{NavbarComponent}from './layout/navbar/navbar.component';
+import { Mensaje1FormComponent } from './mensaje1-form/mensaje1-form.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductListComponent } from './components/products/product-list/product-list.component';
+import { ProductComponent } from './components/products/product/product.component';
+import {ProductService} from './services/product.service';//ULTIMO AUMENTO
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';//ULTIMO AUMENTO
+import {ToastrModule} from 'ngx-toastr';
+import { CartDetailComponent } from './cart/cart-detail/cart-detail.component';
+import { SearchbarComponent } from './layout/searchbar/searchbar.component';
 
+import { from } from 'rxjs';
+import { AccesoriosComponent } from './category/accesorios/accesorios.component';
+
+
+const routes: Routes=[
+  
+  {path:'product-form', component: ProductFormComponent },
+  {path:'navbar', component:NavbarComponent},
+  {path:'mensaje1', component:Mensaje1FormComponent},
+  {path:'cart', component:CartDetailComponent},
+  {path:'searchbar', component:SearchbarComponent},
+  {path: 'Accesorios', component: AccesoriosComponent}
+]
 
 
 
 
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule,AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, AppRoutingModule,LayoutModule],
+  declarations: [AppComponent, ProductFormComponent, Mensaje1FormComponent, ProductsComponent, ProductListComponent, ProductComponent,CartDetailComponent],
+  imports: [BrowserModule, 
+    RouterModule.forRoot(routes),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, AppRoutingModule,LayoutModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    FormsModule],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
