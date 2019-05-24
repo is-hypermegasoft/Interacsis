@@ -1,3 +1,4 @@
+<font size=6 color="blue"><p>LAPTOPS</p></font>
 <div class="row">
   <div *ngFor = "let product of laptops$ | async" class="col s12 m4">
     <div class="card" style="width: 18rem">
@@ -7,7 +8,7 @@
       </div>
       <div class="card-content">
         <P><b>{{product.name}}</b></P>
-        <p><b>Precio: </b>${{product.price}}</p>
+        <p><b>Price: </b>${{product.price}}</p>
       </div>
       <div class="card-action">
         <a href="#" class="btn">Buy</a>
@@ -23,7 +24,7 @@
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle"><p><b>Nombre:</b> {{mostrarItem.name}} </p></h5>
+        <h5 class="modal-title" id="exampleModalScrollableTitle"><p><b>Name:</b> {{mostrarItem.name}} </p></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -31,9 +32,9 @@
       <div class="modal-body">
         <img [src]="mostrarItem.image" class="card-img-top">
         <p></p>
-        <p><b>Nombre:</b> {{mostrarItem.name}} </p>
-        <p><b>Precio:</b>$us {{mostrarItem.price}} </p>
-        <p><b>Descripcion:</b> {{mostrarItem.description}} </p>
+        <p><b>Name:</b> {{mostrarItem.name}} </p>
+        <p><b>Price:</b>$us {{mostrarItem.price}} </p>
+        <p><b>Description:</b> {{mostrarItem.description}} </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
