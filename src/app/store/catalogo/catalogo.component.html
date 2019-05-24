@@ -1,6 +1,6 @@
 
 <div class = "container">
-  <font size=6 color="blue"><p>NUEVAS ADQUISICIONES</p></font>
+  <font size=6 color="blue"><p>NEW</p></font>
   <div class="row">
     <div *ngFor = "let product of nuevos$ | async" class="col s12 m4">
       <div class="card" style="width: 18rem">
@@ -10,7 +10,31 @@
         </div>
         <div class="card-content">
           <P><b>{{product.name}}</b></P>
-          <p><b>Precio: </b>${{product.price}}</p>
+          <p><b>Price: </b>${{product.price}}</p>
+        </div>
+        <div class="card-action">
+          <a href="#" class="btn">Buy</a>
+          <p></p>
+          <a (click)="Carrito(product)" class="btn">Add to Cart</a>
+          <p></p>
+          <a (click)="detalles(product)" data-toggle="modal" data-target="#exampleModalScrollable" class="btn">Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class = "container">
+  <font size=6 color="blue"><p>OFFERS</p></font>
+  <div class="row">
+    <div *ngFor = "let product of ofertas$ | async" class="col s12 m4">
+      <div class="card" style="width: 18rem">
+        <div class="card-image">
+          <img [src]="product.image">
+          <span style="color:rgb(248,81,4)" class="card-title"></span>
+        </div>
+        <div class="card-content">
+          <P><b>{{product.name}}</b></P>
+          <p><b>Price: </b>${{product.price}}</p>
         </div>
         <div class="card-action">
           <a href="#" class="btn">Buy</a>
@@ -24,31 +48,6 @@
   </div>
 </div>
 
-<div class = "container">
-    <font size=6 color="blue"><p>OFERTAS</p></font>
-  <div class="row">
-      <div *ngFor = "let product of ofertas$ | async" class="col s12 m3">
-        <div class="card" style="width: 18rem">
-          <div class="card-image">
-            <img [src]="product.image">
-            <span style="color:rgb(248,81,4)" class="card-title"></span>
-          </div>
-          <div class="card-content">
-           <p><b>{{product.name}}</b></p>
-            <p>
-              <b>Precio: </b>${{product.price}}</p>
-          </div>
-          <div class="card-action">
-            <a href="#" class="btn">Comprar</a>
-            <p></p>
-            <a (click)="Carrito(product)" class="btn">Añadir carrito</a>
-            <p></p>
-            <a href="" class="btn">Ver Detalles</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Modal -->
 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
