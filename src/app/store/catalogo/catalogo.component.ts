@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+<<<<<<< HEAD
 import { Product } from 'src/app/models/product';
+=======
+import { Product } from 'src/app/shared/models/product';
+import { ProductsService } from '../../shared/models/products.service';
+>>>>>>> ef7ec828cbcdcdb0f4bb6277b6fa74d433575cc4
 
 import { ProductService } from 'src/app/services/product.service';
 @Component({
@@ -21,6 +26,7 @@ export class CatalogoComponent implements OnInit {
     this.products$.subscribe(products => {
       this.products = products;
       console.log(this.products);
+<<<<<<< HEAD
 
     });*/
     this.products$=this.productsService.getProducts();
@@ -36,6 +42,9 @@ export class CatalogoComponent implements OnInit {
   Carrito(product: Product){
     this.productsService.agregarCarrito(product);
     //this.carritoService.agregarCarrito(product);no funciona no puedo inyectar el servicio
+=======
+    });
+>>>>>>> ef7ec828cbcdcdb0f4bb6277b6fa74d433575cc4
   }
 
 }
