@@ -20,10 +20,17 @@ import {ProductService} from './services/product.service';//ULTIMO AUMENTO
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';//ULTIMO AUMENTO
 import {ToastrModule} from 'ngx-toastr';
 import { CartDetailComponent } from './cart/cart-detail/cart-detail.component';
+
 import { HomeComponent } from './account/home/home.component';
 import { LoginComponent } from './account/auth/login/login.component';
 import { RegistrationComponent } from './account/auth/registration/registration.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { AccesoriosComponent } from './Category/accesorios/accesorios.component';
+import { LaptopsComponent } from './Category/laptops/laptops.component';
+import { GamerComponent } from './Category/gamer/gamer.component';
+import { PcComponent } from './Category/pc/pc.component';
+import { PerifericosComponent } from './Category/perifericos/perifericos.component';
 
 const routes: Routes=[
   {path:'product-form', component: ProductFormComponent },
@@ -32,7 +39,12 @@ const routes: Routes=[
   {path:'cart', component:CartDetailComponent},
   {path:'home', component:HomeComponent},
   {path:'login', component:LoginComponent},
-  {path:'register', component:RegistrationComponent}
+  {path:'register', component:RegistrationComponent},
+  {path: 'laptops',component:LaptopsComponent},
+  {path: 'accesorios',component:AccesoriosComponent},
+  {path:'gamer',component:GamerComponent},
+  {path:'pc',component:PcComponent},
+  {path: 'perifericos',component:PerifericosComponent }
 ]
 
 
@@ -44,6 +56,11 @@ const routes: Routes=[
     ProductListComponent,
     ProductComponent,
     CartDetailComponent,
+    AccesoriosComponent,
+    LaptopsComponent,
+    GamerComponent,
+    PcComponent,
+    PerifericosComponent,
     HomeComponent,
     LoginComponent,
     RegistrationComponent
