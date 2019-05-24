@@ -4,11 +4,15 @@ import {AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument} fr
 import {Observable} from 'rxjs';
 import {Product} from '../models/product';
 import {map} from 'rxjs/operators';
+
+export interface Item { name: string;}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
+  items: Observable<Item[]>;
+  private itemDoc: AngularFirestoreDocument<Item>;
   //coleccion firestore de carrito
   productsCollectionCarrito: AngularFirestoreCollection<Product>;
   carritoCollection: AngularFirestoreCollection<Product>;
@@ -32,8 +36,14 @@ constructor(public db:AngularFirestore) {
   //almacenamos toda la coleccion del carrito
   this.carritoCollection=this.db.collection('usuarios/E9DZmcLPUxWRWHt5obtR/carrito');
   //alamcenamos la coleccion en el observable
-  this.carrito=this.carritoCollection.valueChanges();
-
+  //this.carrito=this.carritoCollection.valueChanges();
+  this.carrito=this.carritoCollection.snapshotChanges().pipe(
+    map( actions => actions.map(a=> {
+      const data = a.payload.doc.data() as Item;
+      const id = a.payload.doc.id;
+      return { id, ...data };
+    }))
+  )
  }
 
 //metodo que retorna el nro de elementos del carrito
@@ -68,6 +78,7 @@ nroDocsCarrito(){
   getCarrito(): Observable <Product[]>{
     return this.carritoCollection.valueChanges();
   }
+
   getLaptops(): Observable <Product[]>{
     return this.db.collection<Product>('Products',ref=>ref.where('category','==','laptops')).valueChanges();
   }
@@ -83,4 +94,11 @@ nroDocsCarrito(){
   getPcs(): Observable <Product[]>{
     return this.db.collection<Product>('Products',ref=>ref.where('category','==','pc')).valueChanges();
   }
+
+
+  mostrarItem(product)
+ {
+  this.itemDoc = this.db.doc<Item>(`items/${product.id}`);
+  this.itemDoc.update(product);
+ }
 }
