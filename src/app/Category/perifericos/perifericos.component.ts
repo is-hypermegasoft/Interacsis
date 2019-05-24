@@ -9,11 +9,20 @@ import {ProductService} from '../../services/product.service';
 })
 export class PerifericosComponent implements OnInit {
     perifericos$  : Observable<Product[]>;
+    mostrarItem:any;
   constructor(private productsService: ProductService) { }
 
   ngOnInit() : void{
 
     this.perifericos$=this.productsService.getPerifericos();
+  }
+  detalles(product)
+  {
+    this.mostrarItem = product
+  }
+  Carrito(product: Product){
+    this.productsService.agregarCarrito(product);
+    //this.carritoService.agregarCarrito(product);no funciona no puedo inyectar el servicio
   }
 
 }
