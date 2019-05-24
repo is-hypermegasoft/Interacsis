@@ -20,12 +20,18 @@ import {ProductService} from './services/product.service';//ULTIMO AUMENTO
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';//ULTIMO AUMENTO
 import {ToastrModule} from 'ngx-toastr';
 import { CartDetailComponent } from './cart/cart-detail/cart-detail.component';
+import { HomeComponent } from './account/home/home.component';
+import { LoginComponent } from './account/auth/login/login.component';
+import { RegistrationComponent } from './account/auth/registration/registration.component';
 
 const routes: Routes=[
   {path:'product-form', component: ProductFormComponent },
   {path:'navbar', component:NavbarComponent},
   {path:'mensaje1', component:Mensaje1FormComponent},
-  {path:'cart', component:CartDetailComponent}
+  {path:'cart', component:CartDetailComponent},
+  {path:'home', component:HomeComponent},
+  {path:'login', component:LoginComponent},
+  {path:'registration', component:RegistrationComponent}
 ]
 
 
