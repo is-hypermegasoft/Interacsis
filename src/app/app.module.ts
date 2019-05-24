@@ -15,24 +15,27 @@ import{NavbarComponent}from './layout/navbar/navbar.component';
 import { Mensaje1FormComponent } from './mensaje1-form/mensaje1-form.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
-import { ProductComponent } from './components/products/product/product.component';
+//import { ProductComponent } from './components/products/product/product.component';
 import {ProductService} from './services/product.service';//ULTIMO AUMENTO
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';//ULTIMO AUMENTO
 import {ToastrModule} from 'ngx-toastr';
 import { CartDetailComponent } from './cart/cart-detail/cart-detail.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { FilterPipe } from './pipes/filter.pipe';
-
+import {ConexionService} from './services/conexion.service';
+import { ListaComponent } from './components/lista/lista.component';
 const routes: Routes=[
   {path:'product-form', component: ProductFormComponent },
   {path:'navbar', component:NavbarComponent},
   {path:'mensaje1', component:Mensaje1FormComponent},
-  {path:'cart', component:CartDetailComponent}
+  {path:'cart', component:CartDetailComponent},
+  {path:'products',component:ProductsComponent},
+  
 ]
 
 
 @NgModule({
-  declarations: [AppComponent, ProductFormComponent, Mensaje1FormComponent, ProductsComponent, ProductListComponent, ProductComponent,CartDetailComponent, PostsComponent, FilterPipe],
+  declarations: [AppComponent, ProductFormComponent, Mensaje1FormComponent, ProductsComponent, ProductListComponent, ProductsComponent,CartDetailComponent, PostsComponent, FilterPipe, ListaComponent],
   imports: [BrowserModule, 
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
@@ -40,7 +43,7 @@ const routes: Routes=[
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     FormsModule],
-  providers: [ProductService],
+  providers: [ProductService,ConexionService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

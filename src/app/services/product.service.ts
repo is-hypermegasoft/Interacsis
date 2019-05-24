@@ -4,6 +4,7 @@ import {AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument} fr
 import {Observable} from 'rxjs';
 import {Product} from '../models/product';
 import {map} from 'rxjs/operators';
+import { ActionSequence } from 'protractor';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,9 +16,13 @@ export class ProductService {
   //observable para carrito
   carrito:Observable<Product[]>;
 
+  //productsCollection: AngularFirestoreCollection<Product>;
   productsCollection: AngularFirestoreCollection<Product>;
-  productDoc:AngularFirestoreDocument<Product>;
+  //productDoc:AngularFirestoreDocument<Product>;
+  productDoc:AngularFirestoreDocument<Product> ;
   products:Observable<Product[]>;
+  
+  
   selectProduct: Product;//AUMENTE
 
 constructor(public db:AngularFirestore) {
@@ -25,14 +30,37 @@ constructor(public db:AngularFirestore) {
   //se da a producsCollection la ruta donde debera almacenar el producto para el carrito
     //para siguiente tarea habria que agregar el id usuario que cargara su carrito
     this.productsCollectionCarrito=this.db.collection('usuarios/E9DZmcLPUxWRWHt5obtR/carrito/');
-  this.productsCollection=this.db.collection('Products');
-  this.products=this.productsCollection.valueChanges();
+    this.productsCollection=this.db.collection('Products');
+    //this.products=this.productsCollection.valueChanges();
  // this.productsCollection=this.db.collection('Products');
  // this.products=this.productsCollection.valueChanges();
   //almacenamos toda la coleccion del carrito
   this.carritoCollection=this.db.collection('usuarios/E9DZmcLPUxWRWHt5obtR/carrito');
   //alamcenamos la coleccion en el observable
   this.carrito=this.carritoCollection.valueChanges();
+  //Ultimo aumento
+  //this.productsCollection=this.db.collection('Products');
+  //this.productsCollection=db.collection<Product>('products');
+  //this.products=this.productsCollection.valueChanges();
+    this.products=this.productsCollection.snapshotChanges().pipe(map(actions=>{
+      return actions.map(a=>{
+        const data=a.payload.doc.data() as Product;
+        //const id=a.payload.doc.id;
+        //return {id, ...data};
+        data.id=a.payload.doc.id;
+        return data;   
+      })
+    }))
+    
+  
+  /*this.products=this.productsCollection.snapshotChanges().pipe(map(actions
+    =>actions.map(a=>{
+          const data=a.payload.doc.data() as Product;
+          data.id=a.payload.doc.id;
+          return data;
+        }))
+    );
+    }*/
 
  }
 
@@ -51,8 +79,13 @@ nroDocsCarrito(){
  
 
  getProducts(){
+
    return this.products;
+   
  }
+ /*getProducts2(){
+   return this.products;
+ }*/
  addProduct(product: Product){
    //this.productsCollection.add(product);
   // this.products[0]=product;
@@ -67,5 +100,14 @@ nroDocsCarrito(){
 }
   getCarrito(): Observable <Product[]>{
     return this.carritoCollection.valueChanges();
+  }
+  deleteProduct(product:Product)
+  {
+    this.productDoc=this.db.doc<Product>(`products/${product.id}`);
+    this.productDoc.delete();   
+  }
+  updateProduct(product){
+    this.productDoc=this.db.doc<Product>(`products/${product.id}`);
+    this.productDoc.update(product);
   }
 }

@@ -1,3 +1,53 @@
 <p>
-  products works!
+  Works
 </p>
+<!----div *ngIf="products.length>0;else noproducts"-->
+  <div><ul class="list-group">
+    <li *ngFor="let p of products" class="list-group-item list-group-item-action">
+      <h5>{{p.name}}</h5>
+      <h3>{{p.price}}<br/></h3>
+      <p>{{p.description}}</p>
+      <p>{{p.categoria}}</p>
+      <p>{{p.state}}</p>
+      <p>{{p.id}}</p>
+      <button (click)="deleteProduct($event,p)" class="btn btn-danger">
+        Delete
+      </button>
+      <button (click)="editProduct($event,p)" class="btn btn-secondary">
+        Edit
+      </button>
+      <div *ngIf="editing && editingProduct.id == p.id">
+          <form (ngSubmit)="updateProduct()">
+            <div class="form-group mt-3">
+                <input type="text" name="name" [(ngModel)]="editingProduct.name"class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="number" name="price" [(ngModel)]="editingProduct.price"class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="description" [(ngModel)]="editingProduct.description"class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="category" [(ngModel)]="editingProduct.categoria"class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="state" [(ngModel)]="editingProduct.state "class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="image" [(ngModel)]="editingProduct.image "class="form-control">
+          </div>
+            
+           
+            <button type="submit" class="btn btn-success btn-block">
+              Update
+            </button>
+
+          </form>
+      </div>
+    
+    </li>
+  </ul>
+</div>
+<ng-template #noproducts>
+    <p>No hay productos , aun...</p>
+</ng-template>
