@@ -1,7 +1,7 @@
 <p>
   Works
 </p>
-<!----div *ngIf="products.length>0;else noproducts"-->
+<!----div *ngIf="products.length>0;else noproducts">
   <div><ul class="list-group">
     <li *ngFor="let p of products" class="list-group-item list-group-item-action">
       <h5>{{p.name}}</h5>
@@ -10,7 +10,7 @@
       <p>{{p.categoria}}</p>
       <p>{{p.state}}</p>
       <p>{{p.id}}</p>
-      <button (click)="deleteProduct($event,p)" class="btn btn-danger">
+      <button (click)="deleteProduct(p)" class="btn btn-danger">
         Delete
       </button>
       <button (click)="editProduct($event,p)" class="btn btn-secondary">
@@ -47,7 +47,22 @@
     
     </li>
   </ul>
+</div-->
+<div class="alert alert-warning" role="alert"
+     *ngFor="let p of products">
+
+     {{p.name}}<br/>
+     {{p.price}}<br/>
+     {{p.id}}<br/>
+     <button (click)="deleteProduct(p)" >
+      Delete
+
+     </button>   
 </div>
+     
+
+
+
 <ng-template #noproducts>
     <p>No hay productos , aun...</p>
 </ng-template>

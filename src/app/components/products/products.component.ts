@@ -39,21 +39,22 @@ export class ProductsComponent implements OnInit {
       })
     });*/
   }
-  deleteProduct(event,product){
-    if(confirm('Are you sure you want to delete it?')){
+  deleteProduct(product:Product){
+    /*if(confirm('Are you sure you want to delete it?')){
       this.productService.deleteProduct(product);
-    }
+    }*/
+    this.productService.deleteProduct(product);
     
   }
-  editProduct(event,product){
+  /*editProduct(event,product){
     this.editingProduct=product;
     this.editing=!this.editing;
 
-  }
-  updateProduct(){
+  }*/
+  /*updateProduct(){
     this.productService.updateProduct(this.editingProduct);
     this.editingProduct={} as Product;
     this.editing=false;
 
-  }
+  }*/
 } 

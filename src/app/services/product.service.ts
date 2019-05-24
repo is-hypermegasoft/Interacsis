@@ -31,16 +31,11 @@ constructor(public db:AngularFirestore) {
     //para siguiente tarea habria que agregar el id usuario que cargara su carrito
     this.productsCollectionCarrito=this.db.collection('usuarios/E9DZmcLPUxWRWHt5obtR/carrito/');
     this.productsCollection=this.db.collection('Products');
-    //this.products=this.productsCollection.valueChanges();
- // this.productsCollection=this.db.collection('Products');
- // this.products=this.productsCollection.valueChanges();
-  //almacenamos toda la coleccion del carrito
+    
   this.carritoCollection=this.db.collection('usuarios/E9DZmcLPUxWRWHt5obtR/carrito');
   //alamcenamos la coleccion en el observable
   this.carrito=this.carritoCollection.valueChanges();
-  //Ultimo aumento
-  //this.productsCollection=this.db.collection('Products');
-  //this.productsCollection=db.collection<Product>('products');
+  
   //this.products=this.productsCollection.valueChanges();
     this.products=this.productsCollection.snapshotChanges().pipe(map(actions=>{
       return actions.map(a=>{
@@ -53,15 +48,7 @@ constructor(public db:AngularFirestore) {
     }))
     
   
-  /*this.products=this.productsCollection.snapshotChanges().pipe(map(actions
-    =>actions.map(a=>{
-          const data=a.payload.doc.data() as Product;
-          data.id=a.payload.doc.id;
-          return data;
-        }))
-    );
-    }*/
-
+  
  }
 
 //metodo que retorna el nro de elementos del carrito
