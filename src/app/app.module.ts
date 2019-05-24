@@ -20,17 +20,27 @@ import {ProductService} from './services/product.service';//ULTIMO AUMENTO
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';//ULTIMO AUMENTO
 import {ToastrModule} from 'ngx-toastr';
 import { CartDetailComponent } from './cart/cart-detail/cart-detail.component';
+import { AccesoriosComponent } from './Category/accesorios/accesorios.component';
+import { LaptopsComponent } from './Category/laptops/laptops.component';
+import { GamerComponent } from './Category/gamer/gamer.component';
+import { PcComponent } from './Category/pc/pc.component';
+import { PerifericosComponent } from './Category/perifericos/perifericos.component';
 
 const routes: Routes=[
   {path:'product-form', component: ProductFormComponent },
   {path:'navbar', component:NavbarComponent},
   {path:'mensaje1', component:Mensaje1FormComponent},
-  {path:'cart', component:CartDetailComponent}
+  {path:'cart', component:CartDetailComponent},
+  {path: 'laptops',component:LaptopsComponent},
+  {path: 'accesorios',component:AccesoriosComponent},
+  {path:'gamer',component:GamerComponent},
+  {path:'pc',component:PcComponent},
+  {path: 'perifericos',component:PerifericosComponent }
 ]
 
 
 @NgModule({
-  declarations: [AppComponent, ProductFormComponent, Mensaje1FormComponent, ProductsComponent, ProductListComponent, ProductComponent,CartDetailComponent],
+  declarations: [AppComponent, ProductFormComponent, Mensaje1FormComponent, ProductsComponent, ProductListComponent, ProductComponent,CartDetailComponent, AccesoriosComponent, LaptopsComponent, GamerComponent, PcComponent, PerifericosComponent],
   imports: [BrowserModule, 
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),

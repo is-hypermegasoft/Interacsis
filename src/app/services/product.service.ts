@@ -68,4 +68,19 @@ nroDocsCarrito(){
   getCarrito(): Observable <Product[]>{
     return this.carritoCollection.valueChanges();
   }
+  getLaptops(): Observable <Product[]>{
+    return this.db.collection<Product>('Products',ref=>ref.where('category','==','laptops')).valueChanges();
+  }
+  getAccesorios(): Observable <Product[]>{
+    return this.db.collection<Product>('Products',ref=>ref.where('category','==','accesorios')).valueChanges();
+  }
+  getGamer(): Observable <Product[]>{
+    return this.db.collection<Product>('Products',ref=>ref.where('category','==','gamer')).valueChanges();
+  }
+  getPerifericos(): Observable <Product[]>{
+    return this.db.collection<Product>('Products',ref=>ref.where('category','==','perifericos')).valueChanges();
+  }
+  getPcs(): Observable <Product[]>{
+    return this.db.collection<Product>('Products',ref=>ref.where('category','==','pc')).valueChanges();
+  }
 }
