@@ -23,6 +23,7 @@ import { CartDetailComponent } from './cart/cart-detail/cart-detail.component';
 import { HomeComponent } from './account/home/home.component';
 import { LoginComponent } from './account/auth/login/login.component';
 import { RegistrationComponent } from './account/auth/registration/registration.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 const routes: Routes=[
   {path:'product-form', component: ProductFormComponent },
@@ -31,15 +32,26 @@ const routes: Routes=[
   {path:'cart', component:CartDetailComponent},
   {path:'home', component:HomeComponent},
   {path:'login', component:LoginComponent},
-  {path:'registration', component:RegistrationComponent}
+  {path:'register', component:RegistrationComponent}
 ]
 
 
 @NgModule({
-  declarations: [AppComponent, ProductFormComponent, Mensaje1FormComponent, ProductsComponent, ProductListComponent, ProductComponent,CartDetailComponent],
+  declarations: [AppComponent,
+    ProductFormComponent,
+    Mensaje1FormComponent,
+    ProductsComponent,
+    ProductListComponent,
+    ProductComponent,
+    CartDetailComponent,
+    HomeComponent,
+    LoginComponent,
+    RegistrationComponent
+  ],
   imports: [BrowserModule, 
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     AngularFirestoreModule, AppRoutingModule,LayoutModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
