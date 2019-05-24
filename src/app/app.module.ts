@@ -25,7 +25,6 @@ import { LoginComponent } from './account/auth/login/login.component';
 import { RegistrationComponent } from './account/auth/registration/registration.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-<<<<<<< HEAD
 const routes: Routes=[
   {path:'product-form', component: ProductFormComponent },
   {path:'navbar', component:NavbarComponent},
@@ -58,12 +57,6 @@ const routes: Routes=[
     ToastrModule.forRoot(),
     FormsModule],
   providers: [ProductService],
-=======
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, AppRoutingModule, LayoutModule],
->>>>>>> ef7ec828cbcdcdb0f4bb6277b6fa74d433575cc4
   bootstrap: [AppComponent]
 })
 export class AppModule {}
