@@ -1,4 +1,4 @@
-<h1>Entro</h1>
+<!----h1>Entro</h1>
 <ul>
   <li *ngFor="let p of items">
     {{item.name}}
@@ -9,3 +9,36 @@
     
   </li>
 </ul>
+<p></p-->
+<div class="container">
+  <div class="card">
+    <div class="card-header text-center">
+      <h4>Listado</h4>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr class="text-center">
+            <th>Cantidad</th>
+            <th>Nombre</th>  
+            <th>Precio por unidad $</th>
+            <th>Precio Total $</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngFor="let product of items | async">
+            <td> {{product.quantity}} </td>
+            <td> {{product.name}} </td>
+            <td> 20 </td>
+            <td> 20 </td>
+            <td>
+              <button class="btn btn-outline-danger" (click)="eliminar(product)" style="margin-left: 10px">ELiminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
