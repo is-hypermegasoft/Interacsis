@@ -5,6 +5,9 @@ import {Observable} from 'rxjs';
 import {Product} from '../models/product';
 import {map} from 'rxjs/operators';
 import { ActionSequence } from 'protractor';
+
+export interface Product {name:string}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +25,7 @@ export class ProductService {
   productDoc:AngularFirestoreDocument<Product> ;
   products:Observable<Product[]>;
   
+  private itemDoc:AngularFirestoreDocument<Product>; 
   
   selectProduct: Product;//AUMENTE
 
@@ -40,10 +44,10 @@ constructor(public db:AngularFirestore) {
     this.products=this.productsCollection.snapshotChanges().pipe(map(actions=>{
       return actions.map(a=>{
         const data=a.payload.doc.data() as Product;
-        //const id=a.payload.doc.id;
-        //return {id, ...data};
-        data.id=a.payload.doc.id;
-        return data;   
+        const id=a.payload.doc.id;
+        return {id, ...data};
+        //data.id=a.payload.doc.id;
+        //return data;   
       })
     }))
     
@@ -96,5 +100,15 @@ nroDocsCarrito(){
   updateProduct(product){
     this.productDoc=this.db.doc<Product>(`products/${product.id}`);
     this.productDoc.update(product);
+  }
+  deleteProduct3(p){
+
+    this.itemDoc=this.db.doc<Product>(`products/${p.id}`);
+    console.log(p);
+    //this.db.doc<Product>('Products/'+id3).delete();
+    //this.db.doc<Product>('products/'+id3).delete();
+    //this.db.collection('products/id3').doc.d
+    //this.db.firestore.doc(`product/`+id3).delete();
+    this.itemDoc.delete();
   }
 }

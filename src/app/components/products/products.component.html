@@ -1,54 +1,8 @@
 <p>
   Works
 </p>
-<!----div *ngIf="products.length>0;else noproducts">
-  <div><ul class="list-group">
-    <li *ngFor="let p of products" class="list-group-item list-group-item-action">
-      <h5>{{p.name}}</h5>
-      <h3>{{p.price}}<br/></h3>
-      <p>{{p.description}}</p>
-      <p>{{p.categoria}}</p>
-      <p>{{p.state}}</p>
-      <p>{{p.id}}</p>
-      <button (click)="deleteProduct(p)" class="btn btn-danger">
-        Delete
-      </button>
-      <button (click)="editProduct($event,p)" class="btn btn-secondary">
-        Edit
-      </button>
-      <div *ngIf="editing && editingProduct.id == p.id">
-          <form (ngSubmit)="updateProduct()">
-            <div class="form-group mt-3">
-                <input type="text" name="name" [(ngModel)]="editingProduct.name"class="form-control">
-            </div>
-            <div class="form-group">
-                <input type="number" name="price" [(ngModel)]="editingProduct.price"class="form-control">
-            </div>
-            <div class="form-group">
-                <input type="text" name="description" [(ngModel)]="editingProduct.description"class="form-control">
-            </div>
-            <div class="form-group">
-                <input type="text" name="category" [(ngModel)]="editingProduct.categoria"class="form-control">
-            </div>
-            <div class="form-group">
-                <input type="text" name="state" [(ngModel)]="editingProduct.state "class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="text" name="image" [(ngModel)]="editingProduct.image "class="form-control">
-          </div>
-            
-           
-            <button type="submit" class="btn btn-success btn-block">
-              Update
-            </button>
 
-          </form>
-      </div>
-    
-    </li>
-  </ul>
-</div-->
-<div class="alert alert-warning" role="alert"
+<!--div class="alert alert-warning" role="alert"
      *ngFor="let p of products">
 
      {{p.name}}<br/>
@@ -58,11 +12,82 @@
       Delete
 
      </button>   
+</div-->
+<p></p>
+<div class="container">
+  <div class="card">
+    <div class="card-header text-center">
+      <h4>Listado de Productos</h4>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr class="text-center">
+            <th>Nombre</th>  
+            <th>Precio</th>
+            <th>Categoria</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngFor="let item of items | async">
+            <td> {{item.name}} </td>
+            <td> {{item.price}} </td>
+            <td> {{item.category}} </td>
+            <td>
+              <button class="btn btn-outline-success" data-toggle="modal" 
+              data-target="#exampleModalScrollable" (click)="editar(item)">Editar</button>
+              <button class="btn btn-outline-danger" (click)="eliminar(item)" style="margin-left: 10px">ELiminar</button>
+              <!--<div class="float-right" (click)="eliminar(item)">
+                  <i class="far fa-trash-alt"></i>
+              </div>-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+<br>
+
+<!--Modal-->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle"><p>Nombre: {{editarItem.name}} </p></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="agregarItemEditado()">
+            <div class="col-sm-6 mb-3">    
+              <label><b>Nombre: </b></label>
+                <input type="text" name="name" class="form-control" 
+                  placeholder="Modifique el Nombre" required
+                  [(ngModel)]="editarItem.name"
+                >
+            </div>
+            <div class="col-sm-6 mb-3">
+              <label><b>Precio: </b></label>
+                <input type="text" name="price" class="form-control" 
+                  placeholder="Modifique el Precio" required
+                  [(ngModel)]="editarItem.price"
+                >
+            </div>
+            <button type="submit" class="btn btn-primary">Editar</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
      
 
 
 
-<ng-template #noproducts>
-    <p>No hay productos , aun...</p>
-</ng-template>

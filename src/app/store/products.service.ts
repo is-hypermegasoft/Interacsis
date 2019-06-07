@@ -14,6 +14,7 @@ export class ProductsService
   private itemsCollection: AngularFirestoreCollection<Item>;
   items: Observable<Item[]>;
   private itemDoc: AngularFirestoreDocument<Item>;
+  private itemDoc2: AngularFirestoreDocument<Product>;
 
     //coleccion firestore de carrito
     productsCollectionCarrito: AngularFirestoreCollection<Product>;
@@ -73,5 +74,10 @@ nroDocsCarrito(){
  {
   this.itemDoc = this.database.doc<Item>(`items/${product.id}`);
   this.itemDoc.update(product);
+ }
+ deleteProduct2(id){
+   //this.itemDoc2=this.database.doc<Product>('products/'+id).delete();
+   console.log(id);
+   this.database.doc<Product>(`products/${id}`).delete();
  }
 }

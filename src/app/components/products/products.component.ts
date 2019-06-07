@@ -9,7 +9,7 @@ import {Product} from 'src/app/models/product';
 })
 export class ProductsComponent implements OnInit {
  // products:Product[];
- products:any;
+ products:any; idem:any;
   //editingProduct: Product;
   editingProduct:any={name:'',
                       price:'',
@@ -39,11 +39,12 @@ export class ProductsComponent implements OnInit {
       })
     });*/
   }
-  deleteProduct(product:Product){
+  deleteProduct(p){
     /*if(confirm('Are you sure you want to delete it?')){
       this.productService.deleteProduct(product);
     }*/
-    this.productService.deleteProduct(product);
+    console.log(p);
+    this.productService.deleteProduct3(p);
     
   }
   /*editProduct(event,product){
