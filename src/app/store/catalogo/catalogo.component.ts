@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product';
 
-import { ProductsService } from '../products.service';
 import { ProductService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-catalogo',
@@ -15,7 +14,7 @@ export class CatalogoComponent implements OnInit {
   ofertas$:Observable<Product[]>;
   nuevos$:Observable<Product[]>;
   mostrarItem:any;
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductService) {}
 
   ngOnInit() :void {
     /*this.products$ = this.productsService.getProducts();

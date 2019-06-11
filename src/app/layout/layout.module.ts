@@ -8,8 +8,9 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
 
 
 @NgModule({
-  declarations: [NavbarComponent, SidenavDirective, SearchbarComponent],
+  declarations: [NavbarComponent, SidenavDirective,SearchbarComponent],
   imports: [CommonModule, RouterModule],
-  exports: [NavbarComponent,SearchbarComponent ]
+  exports: [NavbarComponent,SearchbarComponent]
 })
 export class LayoutModule {}
+  
