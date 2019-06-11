@@ -13,3 +13,4 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
   exports: [NavbarComponent,SearchbarComponent]
 })
 export class LayoutModule {}
+  
